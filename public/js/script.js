@@ -1,7 +1,5 @@
 import Validator from './Validator.js';
 
-// const registrationForm = document.querySelector('#registrationForm');
-// const loginForm = document.querySelector('#loginForm');
 const form = document.querySelector('form');
 
 const errorTexts = document.querySelectorAll('.error_msg');
@@ -42,7 +40,6 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     hideErrorMessages();
     
-
     let formData = new FormData(event.target);
     formData = Object.fromEntries(formData);
 
@@ -51,28 +48,30 @@ form.addEventListener('submit', (event) => {
         searchParams.append(key, formData[key])
     }
 
-    if(event.target.id = 'registrationForm') {
+    if(event.target.id === 'registration') {
         fetch('../server/register.php', {
             method: 'POST',
             contentType: 'text/html; charset=UTF-8',
             accept: 'application/json',
             processData: false,
             body: searchParams
-        }).then(response => response.json())
-          .then(errorsLog => showErrorMessages(errorsLog))
-          .catch(e => {window.location = '../../login.php'})
+        })
+        .then(response => response.json())
+        .then(errorsLog => showErrorMessages(errorsLog))
+        .catch(e => window.location = '../../login.php')
     }
 
-    if(event.target.id = 'registrationForm') {
+    if(event.target.id === 'login') {
         fetch('../server/login.php', {
             method: 'POST',
             contentType: 'text/html; charset=UTF-8',
             accept: 'application/json',
             processData: false,
             body: searchParams
-        }).then(response => response.json())
-          .then(errorsLog => showErrorMessages(errorsLog))
-          .catch(e => {window.location = '../../login.php'})
+        })
+        .then(response => response.json())
+        .then(errorsLog => showErrorMessages(errorsLog))
+        .catch(e => window.location = '../../register.php')
     }
     
 })

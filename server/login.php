@@ -2,6 +2,8 @@
     require_once('./DBController.php');
     require_once('./User.php');
     require_once('./Validator.php');
+    session_start();
+    
 
     $db = new DBController();
     $validator = new Validator();
@@ -11,24 +13,18 @@
         $_POST['email'],
         $_POST['password'],
         $_POST['confirmPassword']);
-
-    $validator->validate($user);
-    if(!empty($validator->errorsLog)) {
-        header("http/1.1 200 OK");
-        header("Content-Type: application/json");
-        echo json_encode($validator->errorsLog);
-        exit();
-    }
     
-    $db->createAccount($user, $validator->errorsLog);
+    $db->checkAccount($user, $validator->errorsLog);
+    
     
     if(empty($validator->errorsLog)) {
         header("http/1.1 200 OK");
-        exit();
+        $_SESSION['login'] = $user->login;
+        die();
     } else {
         header("http/1.1 200 OK");
         header("Content-Type: application/json");
         echo json_encode($validator->errorsLog);
-        exit();
+        die();
     }
 ?>

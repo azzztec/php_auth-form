@@ -1,6 +1,8 @@
+<?php session_start(); ?>
+
 <?php include('./tamplates/header.php') ?>
 
-<form id="registrationForm">
+<form id="registration">
     <label for="Name">Name</label>
     <div class="error_msg hidden" data-error-name="name"></div>
     <input type="text" id="Name" placeholder="Name" name="name" required>
@@ -21,7 +23,10 @@
     <div class="error_msg hidden" data-error-name="confirmPassword"></div>
     <input type="password" id="ConfirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
 
-    <input type="submit" value="REGISTER">
+    <input type="submit" value="REGISTER" name="submitRegistration">
 </form>
+
+<?php echo $_SESSION['login']; ?>
+
 
 <?php include('./tamplates/footer.php') ?>

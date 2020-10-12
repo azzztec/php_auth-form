@@ -13,12 +13,12 @@
             $this->confirmPassword = $userConfirmPassword;
         }
 
-        public function login() {
-            echo 'Hello';
-        }
+        // public function login($db, $user, $errorsLog) {
+            
+        // }
 
-        public function register() {
+        // public function register() {
 
-        }
+        // }
     }
 ?>
