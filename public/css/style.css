@@ -1,0 +1,59 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+input {
+    /* width: 100%; */
+    margin-bottom: 12px;
+    outline: unset;
+    padding: 5px;
+}
+
+input.wrong {
+    border: 2px solid rgb(216, 0, 0);
+}
+
+input.correct {
+    border: 2px solid rgb(0, 255, 34);
+}
+
+input[type="submit"] {
+    padding: 10px 0;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.error_msg {
+    font-size: 12px;
+    color: rgb(216, 0, 0);
+    margin-left: 6px;
+}
+
+.error_msg.hidden {
+    display: none;
+}
+.error_msg.visible {
+    display: block;
+}
