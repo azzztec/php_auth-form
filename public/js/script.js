@@ -7,7 +7,7 @@ const errorTexts = document.querySelectorAll('.error_msg');
 let validator = new Validator();
 
 function showErrorMessages(errorsLog) {
-    console.log(errorsLog)
+    console.log('errorsLog:  ', errorsLog)
     errorTexts.forEach(message => {
         if(errorsLog[message.dataset.errorName]) {
             message.innerText = errorsLog[message.dataset.errorName];
@@ -58,7 +58,7 @@ form.addEventListener('submit', (event) => {
         })
         .then(response => response.json())
         .then(errorsLog => showErrorMessages(errorsLog))
-        .catch(e => window.location = '../../login.php')
+        .catch(() => window.location = '../../login.php')
     }
 
     if(event.target.id === 'login') {
@@ -71,7 +71,21 @@ form.addEventListener('submit', (event) => {
         })
         .then(response => response.json())
         .then(errorsLog => showErrorMessages(errorsLog))
-        .catch(e => window.location = '../../register.php')
+        .catch(() => window.location = '../../index.php')
+    }
+
+    if(event.target.id === 'logout') {
+        console.log('here');
+        fetch('../server/logout.php', {
+            method: 'POST',
+            contentType: 'text/html; charset=UTF-8',
+            accept: 'application/json',
+            processData: false,
+            body: searchParams
+        })
+        .then(response => response.json())
+        .then(() => window.location = '../../index.php')
+        .catch(() => window.location = '../../index.php')
     }
     
 })

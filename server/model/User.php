@@ -5,7 +5,7 @@
         public $errorLog = [];
         public $name, $login, $email, $password, $confirmPassword;
 
-        public function __construct($userName, $userLogin, $userEmail, $userPassword, $userConfirmPassword) {
+        public function __construct($userLogin = '', $userName = '', $userEmail = '', $userPassword = '', $userConfirmPassword = '') {
             $this->name = $userName;
             $this->login = $userLogin;
             $this->email = $userEmail;

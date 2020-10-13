@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+    if(isset($_SESSION['login'])) {
+        header('location: ./success.php');
+    }
+?>
 
 <?php include('./tamplates/header.php') ?>
 
@@ -25,8 +30,8 @@
 
     <input type="submit" value="REGISTER" name="submitRegistration">
 </form>
-
-<?php echo $_SESSION['login']; ?>
-
+<div>
+    or <a href="./login.php">Login</a>
+</div>
 
 <?php include('./tamplates/footer.php') ?>
